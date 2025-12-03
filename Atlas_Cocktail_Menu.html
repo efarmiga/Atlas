@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Menu</title>
+    <!-- Load Tailwind CSS (kept as primary styling method) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Import Parisienne for elegant script titles (This remains external for the script font) */
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+        
+        :root {
+            /* Updated for a light background theme */
+            --primary-accent: #10B981; /* Modern Deep Teal */
+            --primary-text: #1F2937; /* Dark Gray */
+            --secondary-text: #4B5563; /* Medium Gray for descriptions */
+            --background-light: #F9FAFB; /* Very light gray */
+            --background-card: #FFFFFF; /* White */
+        }
+        body {
+            /* SYSTEM FONT FIX: Uses native OS sans-serif font (like San Francisco on iOS)
+               to ensure font-light (300) weight renders correctly offline. */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background-color: var(--background-light);
+            color: var(--primary-text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+        }
+        .elegant-title {
+            /* Uses external Parisienne font */
+            font-family: 'Parisienne', cursive;
+            font-weight: 400;
+            letter-spacing: normal;
+        }
+        .menu-title {
+            color: var(--primary-text);
+        }
+        .drink-name {
+            color: var(--primary-text);
+            /* EXPLICIT FIX FOR IPHONE LOCAL FILE RENDERING: 
+               Forces the thin weight (300) on the drink names to override system defaults. */
+            font-weight: 300 !important; 
+        }
+        .accent-text {
+            color: var(--primary-accent);
+        }
+        .divider {
+            background-color: var(--primary-accent);
+            height: 2px;
+            width: 75px;
+            margin: 0.5rem auto;
+        }
+
+        /* --- ROBUST MOBILE FIXES (Non-Tailwind Fallbacks) --- */
+        header {
+            text-align: center !important;
+        }
+        .space-y-6 > h2 {
+            text-align: center !important;
+        }
+        .space-y-6 > div {
+            background-color: #f9f9f9;
+            border: 1px solid #eeeeee;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem;
+            margin-bottom: 1.5rem; 
+            transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+        }
+        .space-y-6 > div:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="w-full max-w-5xl mx-auto bg-white p-6 sm:p-12 rounded-2xl shadow-2xl border border-gray-200">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="menu-title text-5xl sm:text-6xl tracking-tighter elegant-title">
+                Atlas
+            </h1>
+            <div class="divider"></div>
+            <p class="text-xl accent-text font-light mt-3">cocktail destinations</p>
+        </header>
+
+        <!-- Menu Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+
+            <!-- SIGNATURE DRINKS SECTION (Creations) -->
+            <div class="space-y-6">
+                <h2 class="menu-title text-5xl border-b border-gray-200 pb-3 mb-4 text-center lg:text-left accent-text elegant-title">
+                    Creations
+                </h2>
+
+                <!-- 1. TOKYO MARTINI -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('tokyo-martini')">
+                    <h3 class="drink-name text-xl font-light mb-1">Tokyo Martini</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, rhubarb-ginger liqueur, lillet blanc</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served up or over a large rock with an orange twist</p>
+                </div>
+
+                <!-- 2. NORDIC VESPER -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('nordic-vesper')">
+                    <h3 class="drink-name text-xl font-light mb-1">Nordic Vesper</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, lillet blanc, elderflower liqueur, optional blueberry</p>
+                    <p class="text-xs text-gray-500 font-medium">shaken, served up, specify clear or blueberry</p>
+                </div>
+
+                <!-- 3. BORDEAUX ROSE -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('bordeaux-rose')">
+                    <h3 class="drink-name text-xl font-light mb-1">Bordeaux Rose</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, lillet blanc, rhubarb-ginger liqueur, muddled strawberry</p>
+                    <p class="text-xs text-gray-500 font-medium">shaken, served up in a coupe</p>
+                </div>
+
+                <!-- 4. Key West Gimlet -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('key-west-gimlet')">
+                    <h3 class="drink-name text-xl font-light mb-1">Key West Gimlet</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, coconut rum, key lime juice, muddled mint</p>
+                    <p class="text-xs text-gray-500 font-medium">shaken, served on the rocks in a lowball with a mint sprig and key lime slice</p>
+                </div>
+                
+                <!-- 5. Atlantic Crossing -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('atlantic-crossing')">
+                    <h3 class="drink-name text-xl font-light mb-1">Atlantic Crossing</h3>
+                    <p class="text-sm italic accent-text mb-2">bourbon, cinzano, rhubarb-ginger liqueur</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served over a large rock with cherry</p>
+                </div>
+            </div>
+
+            <!-- CLASSIC DRINKS SECTION -->
+            <div class="space-y-6">
+                 <h2 class="menu-title text-5xl border-b border-gray-200 pb-3 mb-4 text-center lg:text-left accent-text elegant-title">
+                    Classics
+                </h2>
+                
+                <!-- Parisian Boulevardier -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('parisian-boulevardier')">
+                    <h3 class="drink-name text-xl font-light mb-1">Parisian Boulevardier</h3>
+                    <p class="text-sm italic accent-text mb-2">bourbon, campari, sweet vermouth</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served up or over a large rock with an orange twist</p>
+                </div>
+
+
+                <!-- 6. New England Old Fashioned (Updated) -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('new-england-old-fashioned')">
+                    <h3 class="drink-name text-xl font-light mb-1">New England Old Fashioned</h3>
+                    <p class="text-sm italic accent-text mb-2">bourbon, maple syrup, chocolate and walnut bitters</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served over a large rock with an orange twist</p>
+                </div>
+
+                <!-- 7. Manhattan -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('broadway-manhattan')">
+                    <h3 class="drink-name text-xl font-light mb-1">Broadway Manhattan</h3>
+                    <p class="text-sm italic accent-text mb-2">bourbon, sweet vermouth, aromatic bitters</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served up in a coupe with cherry</p>
+                </div>
+
+                <!-- 8. San Francisco Martinez -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('san-francisco-martinez')">
+                    <h3 class="drink-name text-xl font-light mb-1">San Francisco Martinez</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, sweet vermouth, bing cherry juice</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served up with a lemon zest</p>
+                </div>
+                
+                <!-- 9. Florence Negroni -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer" onclick="showRecipeModal('florence-negroni')">
+                    <h3 class="drink-name text-xl font-light mb-1">Florence Negroni</h3>
+                    <p class="text-sm italic accent-text mb-2">gin, campari, sweet vermouth</p>
+                    <p class="text-xs text-gray-500 font-medium">stirred, served over a large rock with an orange twist</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal-overlay" class="modal-overlay" onclick="closeRecipeModal()">
+        <div id="recipe-modal-content" class="modal-content lg:w-1/3" onclick="event.stopPropagation()">
+            <button class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-3xl font-light" onclick="closeRecipeModal()">&times;</button>
+            <h3 id="modal-title" class="elegant-title menu-title text-4xl mb-4 border-b border-gray-200 pb-2"></h3>
+            
+            <h4 class="font-medium text-lg accent-text mb-2">Ingredients:</h4>
+            <ul id="modal-ingredients" class="list-none space-y-1 mb-4 text-sm text-gray-700"></ul>
+
+            <h4 class="font-medium text-lg accent-text mb-2">Method:</h4>
+            <p id="modal-method" class="text-sm text-gray-700 mb-4"></p>
+
+            <h4 class="font-medium text-lg accent-text mb-2">Serve:</h4>
+            <p id="modal-serve" class="text-sm text-gray-700"></p>
+        </div>
+    </div>
+
+
+    <script>
+        // --- 1. RECIPE DATA ---
+        // Defined recipes based on standard ratios and ingredients listed in the menu.
+        const recipes = {
+            'tokyo-martini': {
+                name: "Tokyo Martini",
+                ingredients: [
+                    "1.5 oz gin",
+                    "1.5 oz rhubarb-ginger liqueur",
+                    "0.75 oz lillet blanc"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain into a chilled martini glass or over a large ice cube in a lowball glass. Garnish with an orange twist."
+            },
+            'nordic-vesper': {
+                name: "Nordic Vesper",
+                ingredients: [
+                    "2 oz gin",
+                    "0.5 oz lillet blanc",
+                    "0.5 oz elderflower liqueur",
+                    "Optional: Add a few blueberries to the shaker for color and flavor."
+                ],
+                method: "Combine ingredients in a shaker with ice and shake vigorously until well-chilled.",
+                serve: "Strain into a chilled martini glass. Garnish with lavender (clear version) or blueberries (blueberry version)."
+            },
+            'bordeaux-rose': {
+                name: "Bordeaux Rose",
+                ingredients: [
+                    "2 strawberries, muddled",
+                    "1.5 oz gin",
+                    "0.75 oz lillet blanc",
+                    "0.75 oz rhubarb-ginger liqueur"
+                ],
+                method: "Muddle strawberries in the shaker. Add remaining ingredients and ice. Shake well.",
+                serve: "Double strain into a chilled coupe. Garnish with a strawberry."
+            },
+            'key-west-gimlet': {
+                name: "Key West Gimlet",
+                ingredients: [
+                    "2 oz gin",
+                    "1 oz coconut rum",
+                    "0.5 oz key lime juice (juice from one key lime)",
+                    "4 mint leaves"
+                ],
+                method: "Muddle mint leaves gently. Add all other ingredients and ice to a shaker. Shake well.",
+                serve: "Strain into a lowball glass over fresh ice. Garnish with a mint sprig and key lime slice."
+            },
+            'atlantic-crossing': {
+                name: "Atlantic Crossing",
+                ingredients: [
+                    "1.5 oz bourbon",
+                    "1.5 oz cinzano",
+                    "0.75 oz rhubarb-ginger liqueur"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain into a lowball glass over a large rock. Garnish with a cherry."
+            },
+            'parisian-boulevardier': {
+                name: "Parisian Boulevardier",
+                ingredients: [
+                    "1.5 oz bourbon",
+                    "1.5 oz campari",
+                    "1.5 oz sweet vermouth"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain into a chilled coupe or a lowball glass over a large rock. Garnish with an orange twist."
+            },
+            'new-england-old-fashioned': {
+                name: "New England Old Fashioned",
+                ingredients: [
+                    "2 oz bourbon",
+                    "0.25 oz maple syrup", // Reduced for balance
+                    "3 dashes chocolate and walnut bitters"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain or build in a lowball glass over a large rock. Garnish with an orange twist."
+            },
+            'broadway-manhattan': {
+                name: "Broadway Manhattan",
+                ingredients: [
+                    "2 oz bourbon",
+                    "1 oz sweet vermouth",
+                    "2 dashes aromatic bitters"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain into a chilled coupe. Garnish with a cherry."
+            },
+            'san-francisco-martinez': {
+                name: "San Francisco Martinez",
+                ingredients: [
+                    "1.5 oz gin",
+                    "1.5 oz sweet vermouth",
+                    "0.25 oz bing cherry juice",
+                    "1 dash aromatic bitters"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain into a chilled martini glass. Garnish with a lemon zest."
+            },
+            'florence-negroni': {
+                name: "Florence Negroni",
+                ingredients: [
+                    "1 oz gin",
+                    "1 oz campari",
+                    "1 oz sweet vermouth"
+                ],
+                method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+                serve: "Strain or build in a lowball glass over a large rock. Garnish with an orange twist."
+            }
+        };
+
+        // --- 2. MODAL FUNCTIONS ---
+        // Variable declaration must be outside functions if used globally
+        const modalOverlay = document.getElementById('recipe-modal-overlay');
+        const modalTitle = document.getElementById('modal-title');
+        const modalIngredients = document.getElementById('modal-ingredients');
+        const modalMethod = document.getElementById('modal-method');
+        const modalServe = document.getElementById('modal-serve');
+
+        /**
+         * Populates the modal with recipe data and displays it.
+         * Includes error handling for robust operation.
+         * @param {string} drinkId The slug key for the recipe data object.
+         */
+        function showRecipeModal(drinkId) {
+            try {
+                const recipe = recipes[drinkId];
+                if (!recipe) {
+                    console.error(`Recipe data not found for ID: ${drinkId}`);
+                    return;
+                }
+                
+                if (!modalOverlay || !modalTitle) {
+                    console.error("Critical modal elements are missing from the DOM. Check IDs.");
+                    return;
+                }
+
+                // Update content
+                modalTitle.textContent = recipe.name;
+                
+                modalIngredients.innerHTML = '';
+                recipe.ingredients.forEach(ingredient => {
+                    const li = document.createElement('li');
+                    li.className = 'list-disc ml-4';
+                    li.textContent = ingredient;
+                    modalIngredients.appendChild(li);
+                });
+
+                modalMethod.textContent = recipe.method;
+                modalServe.textContent = recipe.serve;
+
+                // Show modal with animation classes
+                modalOverlay.style.display = 'flex';
+                // Use setTimeout to ensure the 'display: flex' is applied before the transition starts
+                setTimeout(() => {
+                    modalOverlay.classList.add('active');
+                }, 10);
+
+            } catch (error) {
+                console.error("An unexpected error occurred while showing the recipe modal:", error);
+            }
+        }
+
+        /**
+         * Hides the modal with a transition effect.
+         */
+        function closeRecipeModal() {
+            modalOverlay.classList.remove('active');
+            // Hide modal after transition completes (200ms)
+            setTimeout(() => {
+                modalOverlay.style.display = 'none';
+            }, 200);
+        }
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+                closeRecipeModal();
+            }
+        });
+    </script>
+</body>
+</html>
