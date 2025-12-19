@@ -6,11 +6,12 @@ const recipes = {
         ingredients: [
             "1.5 oz vodka",
             "Double-shot of espresso (chilled)",
-            "0.75 oz Kahlua",
-            "0.75 oz Irish Cream"
+            "0.5 oz Kahlua",
+            "0.5 oz Irish Cream",
+            "0.25 oz Frangelico"
         ],
         method: "Combine all ingredients in a shaker with ice and shake vigorously to create a creamy foam.",
-        serve: "Double strain into a chilled coupe or martini glass. Garnish with three coffee beans."
+        serve: "Double strain into a chilled coupe or martini glass. Garnish with a coffee bean."
     },
     'capri-75': {
         name: "Capri 75",
