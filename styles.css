@@ -196,6 +196,71 @@ header {
     border-color: var(--border-color) !important;
 }
 
+/* Filter Icon */
+#filter-icon svg {
+    stroke: var(--secondary-text);
+    transition: stroke 0.3s ease;
+}
+
+#filter-icon.filter-active svg {
+    stroke: var(--primary-accent);
+}
+
+/* Filter Modal Checkbox Styling */
+#filter-options label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+#filter-options label:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+#filter-options input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+#filter-options .custom-checkbox {
+    height: 20px;
+    width: 20px;
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#filter-options input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+
+#filter-options .custom-checkbox:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#filter-options input[type="checkbox"]:checked + .custom-checkbox:after {
+    display: block;
+}
+
 @supports (padding: max(0px)) {
     body {
         padding-left: max(2rem, env(safe-area-inset-left));

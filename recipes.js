@@ -80,7 +80,7 @@ const recipes = {
         name: "Atlantic Crossing",
         ingredients: [
             "1.5 oz bourbon",
-            "1.5 oz cinzano",
+            "1.5 oz cinzano vermouth",
             "0.75 oz rhubarb-ginger liqueur"
         ],
         method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
