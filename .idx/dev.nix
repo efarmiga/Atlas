@@ -23,7 +23,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["python3" "-m" "http.server" "$PORT" "--directory" "Atlas"];
+          command = ["python3" "-m" "http.server" "$PORT" "--directory" "."];
           manager = "web";
         };
       };
@@ -34,7 +34,7 @@
       # Runs when a workspace is first created
       onCreate = {
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "Atlas/README.md" "Atlas/atlas_cocktail_menu.html" ];
+        default.openFiles = [ "README.md" "atlas_cocktail_menu.html" ];
       };
       # Runs when the workspace is (re)started
       onStart = {};
