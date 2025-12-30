@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Menu Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        .style-card {
+            cursor: pointer;
+            border: 4px solid transparent;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            color: var(--primary-text); 
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .style-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .style-card.selected {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 6px rgba(46, 139, 87, 0.3);
+        }
+
+        .theme-light-card { 
+            background-color: #FFFFFF; 
+            color: #1F2937; 
+        }
+        
+        .theme-dark-card { 
+            background-color: #2B2B2B; 
+            color: #C8C8C8; 
+        } 
+        
+        .theme-holiday-card { 
+            background-color: #296054; 
+            color: #F0F0E0; 
+        }
+        
+        .font-preview-light { 
+            font-family: 'Parisienne', cursive; 
+            font-weight: 400; 
+        } 
+        
+        .font-preview-dark { 
+            font-family: 'Parisienne', cursive; 
+            font-weight: 400; 
+        }  
+        
+        .font-preview-holiday { 
+            font-family: 'Parisienne', cursive; 
+            font-weight: 400; 
+        }
+        
+        .return-button {
+            background-color: var(--primary-accent);
+            color: var(--background-card);
+        }
+        
+        .return-button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="theme-light p-4 sm:p-8">
+    <div class="w-full max-w-5xl mx-auto bg-white p-6 sm:p-12 rounded-2xl shadow-2xl border border-gray-200">
+        
+        <h1 class="elegant-title text-5xl md:text-6xl text-center">Menu Style</h1>
+        
+        <p class="text-center text-lg mt-16 mb-10" style="color: var(--secondary-text);">
+            Click one of the options below to set the menu style for all users.
+        </p>
+        
+        <div id="loadingMessage" class="text-center text-lg mt-10 font-bold">Loading current style...</div>
+
+        <div id="styleOptions" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden">
+            <!-- Style cards will be dynamically generated here -->
+        </div>
+
+        <div id="statusMessage" class="text-center mt-6 font-semibold min-h-[20px]"></div>
+
+        <div class="text-center mt-12">
+            <a href="./atlas_cocktail_menu.html" 
+               class="return-button inline-block px-6 py-3 font-bold rounded-full transition duration-300 shadow-lg">
+                Return to Cocktail Menu
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        // JSONBin.io Configuration
+        const JSONBIN_API_KEY = '$2a$10$nHC1SmRj/XQD.tXzTLmUCu/qluXkMR2HV2.GH8qJmZgLfpLL2.PmW';
+        const JSONBIN_BIN_ID = '693999bed0ea881f401fd403'; // Hardcoded bin ID for shared storage
+        
+        const styleOptionsEl = document.getElementById('styleOptions');
+        const loadingMessageEl = document.getElementById('loadingMessage');
+        const statusMessageEl = document.getElementById('statusMessage');
+
+        const styles = [
+            { 
+                id: 'light', 
+                name: 'Elegant Light', 
+                className: 'theme-light-card', 
+                accentColor: '#10B981', 
+                bg: '#FFFFFF', 
+                text: '#1F2937',
+                description: 'Clean and classic'
+            },
+            { 
+                id: 'dark', 
+                name: 'Elegant Dark', 
+                className: 'theme-dark-card', 
+                accentColor: '#B8860B', 
+                bg: '#2B2B2B', 
+                text: '#C8C8C8',
+                description: 'Sophisticated evening'
+            },
+            { 
+                id: 'holiday', 
+                name: 'Holiday', 
+                className: 'theme-holiday-card', 
+                accentColor: '#FFD700', 
+                bg: '#296054', 
+                text: '#F0F0E0',
+                description: 'Festive celebration'
+            }
+        ];
+
+        // Load current theme from JSONBin
+        async function loadCurrentTheme() {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
+                    headers: {
+                        'X-Access-Key': JSONBIN_API_KEY
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load theme');
+                }
+                
+                const data = await response.json();
+                const themeId = data.record.theme || 'light';
+                
+                console.log('[Theme Selector] Loaded theme:', themeId);
+                document.body.className = `theme-${themeId}`;
+                return themeId;
+                
+            } catch (error) {
+                console.error('[Theme Selector] Error loading theme:', error);
+                return 'light'; // Fallback to light theme
+            }
+        }
+
+        // Save theme to JSONBin
+        async function saveTheme(themeId) {
+            try {
+                statusMessageEl.innerHTML = '<span style="color: var(--secondary-text);">Saving theme...</span>';
+                
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Access-Key': JSONBIN_API_KEY
+                    },
+                    body: JSON.stringify({ theme: themeId })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to save theme');
+                }
+                
+                console.log('[Theme Selector] Theme saved:', themeId);
+                statusMessageEl.innerHTML = `<span style="color: var(--primary-accent);">✓ Style saved! All users will now see the ${styles.find(s => s.id === themeId).name} theme.</span>`;
+                
+                // Update UI
+                document.body.className = `theme-${themeId}`;
+                document.querySelectorAll('.style-card').forEach(card => card.classList.remove('selected'));
+                document.getElementById(`card-${themeId}`).classList.add('selected');
+                
+            } catch (error) {
+                console.error('[Theme Selector] Error saving theme:', error);
+                statusMessageEl.innerHTML = '<span style="color: #EF4444;">Error saving theme. Please try again.</span>';
+            }
+        }
+
+        async function renderStyleOptions() {
+            const currentThemeId = await loadCurrentTheme();
+            
+            styleOptionsEl.innerHTML = styles.map(style => `
+                <div id="card-${style.id}" 
+                     class="style-card p-6 rounded-lg text-center ${style.className} 
+                            ${style.id === currentThemeId ? 'selected' : ''}" 
+                     data-theme-id="${style.id}"
+                     onclick="saveThemeHandler('${style.id}')">
+                    
+                    <div>
+                        <h3 class="text-3xl font-bold mb-3 font-preview-${style.id}" 
+                            style="color: ${style.accentColor};">
+                            ${style.name}
+                        </h3>
+                        <p class="text-sm mb-4 opacity-80">${style.description}</p>
+                    </div>
+                    
+                    <div>
+                        <div class="h-12 rounded-sm border border-opacity-30" 
+                             style="background-color: ${style.bg}; border-color: ${style.text};"></div>
+                        <p class="text-xs mt-2 opacity-60">Click to select</p>
+                    </div>
+                </div>
+            `).join('');
+
+            loadingMessageEl.classList.add('hidden');
+            styleOptionsEl.classList.remove('hidden');
+            console.log('[Theme Selector] Style options rendered');
+        }
+
+        window.saveThemeHandler = saveTheme;
+
+        // Initialize
+        renderStyleOptions();
+
+    </script>
+</body>
+</html>
