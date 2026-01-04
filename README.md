@@ -53,6 +53,26 @@ The application is built with HTML, CSS, and JavaScript. Here is a breakdown of 
 4.  **View the application in your browser:**
     [http://localhost:8000/atlas_cocktail_menu.html](http://localhost:8000/atlas_cocktail_menu.html)
 
+## Development
+
+### Cache-Busting for JavaScript Files
+
+To ensure that browsers always load the latest version of the application's scripts, a cache-busting technique is used. The `script` tags in `atlas_cocktail_menu.html` include a version query string, like so:
+
+```html
+<!-- Load Recipe Data -->
+<script src="recipes.js?v=1.2" defer></script>
+<!-- Load Main Script -->
+<script src="script.js?v=1.2" defer></script>
+```
+
+When making changes to `recipes.js` or `script.js`, it is crucial to increment the version number in this query string (e.g., from `v=1.2` to `v=1.3`). This forces the browser to download the new file, preventing issues where outdated, cached files might cause errors.
+
+This is especially important when:
+- Adding or removing recipes.
+- Changing recipe keys (the unique identifiers for each drink).
+- Modifying the logic in `script.js`.
+
 ## IDX Environment
 
 This project is configured to run in a Google IDX environment. The `.idx/dev.nix` file sets up the necessary environment with Python for running a local server.

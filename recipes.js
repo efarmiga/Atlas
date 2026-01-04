@@ -23,7 +23,7 @@ const recipes = {
         method: "Combine gin and limoncello in a shaker with ice and shake briefly.",
         serve: "Strain into a chilled champagne flute. Top with chilled Prosecco. Garnish with a long lemon twist."
     },
-    'sicily-sunset': {
+    'caribbean-garibaldi': {
         name: "Caribbean Garibaldi",
         ingredients: [
             "1 oz Chinola (passionfruit liqueur)",
@@ -97,6 +97,17 @@ const recipes = {
         ],
         method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
         serve: "Strain into a chilled coupe or a lowball glass over a large rock. Garnish with an orange twist."
+    },
+    'san-juan-cafe-con-ron': {
+        name: "San Juan Café con Ron",
+        ingredients: [
+            "1 double shot of espresso, chilled",
+            "2 oz rum",
+            "1.5 oz Kahlua",
+            "1 oz coconut syrup*"
+        ],
+        method: "Combine all ingredients in a shaker with ice and shake vigorously until well-chilled. *To make coconut syrup: use equal parts shredded coconut, water, and sugar; toast coconut in pot until lightly browned; add water and sugar; simmer to thicken.",
+        serve: "Strain into a chilled martini glass. Garnish with three espresso beans."
     },
     'new-england-old-fashioned': {
         name: "New England Old Fashioned",

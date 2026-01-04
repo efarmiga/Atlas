@@ -29,22 +29,9 @@ Modern JS: Use modern ES6+ syntax. If external libraries are needed, prefer CDN 
 
 Web Standards: Prioritize accessible and maintainable web code.
 
+**Style Consistency:** When adding new recipes or modifying existing ones, always ensure the wording, capitalization, and punctuation are consistent with the rest of the menu and recipe data. This applies even if the user's prompt is stylistically inconsistent.
+
 Debugging: When analyzing errors, consider them thoroughly and in the context of the user's Firebase project setup and current code.
-
-# Local Development & Git Workflow
-When assisting with updates, follow these specific terminal workflows:
-
-Local Server: To preview changes, instruct the user to run python3 -m http.server 8000 and view at http://localhost:8000.
-
-Git Commands: When code changes are complete, provide the exact commands to push to GitHub:
-
-git status
-
-git add <modified_file>
-
-git commit -m "Description of change"
-
-git push origin main
 
 # Overall Guidelines
 Process: Always provide a complete step-by-step plan for review before making code changes. Wait for user confirmation.
