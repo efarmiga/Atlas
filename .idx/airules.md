@@ -40,7 +40,9 @@ Modern JS: Use modern ES6+ syntax. If external libraries are needed, prefer CDN 
 
 SVG Icons: Prefer modern SVG icons (like the funnel polygon) over character-based symbols for a premium feel using the Lucide icon set.
 
-**Style Consistency:** When adding new recipes or modifying existing ones, always ensure the wording, capitalization, and punctuation are consistent with the rest of the menu and recipe data. This applies even if the user's prompt is stylistically inconsistent.
+Script Loading: Do not use query string versioning (e.g., `script.js?v=1.0`) for cache-busting. Instead, ensure the `recipes` data is globally accessible by adding `window.recipes = recipes;` as the first line in `script.js`. This prevents data mapping issues.
+
+Style Consistency: When adding new recipes or modifying existing ones, always ensure the wording, capitalization, and punctuation are consistent with the rest of the menu and recipe data. This applies even if the user's prompt is stylistically inconsistent.
 
 Debugging: When analyzing errors, consider them thoroughly and in the context of the user's Firebase project setup and current code.
 
