@@ -1,3 +1,5 @@
+window.recipes = recipes;
+
 // --- 1. RECIPE MODAL --- //
 
 const recipeModalOverlay = document.getElementById('recipe-modal-overlay');
@@ -54,7 +56,7 @@ const drinkCards = Array.from(document.querySelectorAll('.drink-card'));
 
 // Populate the filter modal with checkboxes from a JSON file
 async function populateFilterOptions() {
-    // Only populate if it hasn't been done already
+    // Only populate if it hasnt been done already
     if (filterOptions.childElementCount > 0) return;
 
     try {
@@ -99,7 +101,7 @@ function openFilterModal() {
 function closeFilterModal() {
     filterModalOverlay.classList.remove('active');
     setTimeout(() => {
-        filterModalOverlay.style.display = 'none';
+        recipeModalOverlay.style.display = 'none';
     }, 200);
 }
 

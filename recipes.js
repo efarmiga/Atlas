@@ -1,18 +1,6 @@
 // Recipe data for all cocktails
 const recipes = {
     // CREATIONS
-    'vienna-velvet': {
-        name: "Vienna Velvet",
-        ingredients: [
-            "1.5 oz vodka",
-            "Double-shot of espresso (chilled)",
-            "0.5 oz Kahlua",
-            "0.5 oz Irish Cream",
-            "0.25 oz Frangelico"
-        ],
-        method: "Combine all ingredients in a shaker with ice and shake vigorously to create a creamy foam.",
-        serve: "Double strain into a chilled coupe or martini glass. Garnish with a coffee bean."
-    },
     'capri-75': {
         name: "Capri 75",
         ingredients: [
@@ -86,6 +74,26 @@ const recipes = {
         method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
         serve: "Strain into a lowball glass over a large rock. Garnish with a cherry."
     },
+    'westchester': {
+        name: "Westchester",
+        ingredients: [
+            "1.5 oz bourbon",
+            "1.5 oz sweet vermouth",
+            "0.5 oz bing cherry juice"
+        ],
+        method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+        serve: "Strain into a lowball glass over a large rock. Garnish with 2-3 bing cherries."
+    },
+    'kyoto-bloom': {
+        name: "Kyoto Bloom",
+        ingredients: [
+            "1.5 oz gin",
+            "1.5 oz sake",
+            "0.25 oz elderflower liqueur"
+        ],
+        method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
+        serve: "Strain into a chilled coupe or martini glass. Garnish with a lemon twist."
+    },
     
     // CLASSICS
     'parisian-boulevardier': {
@@ -149,5 +157,17 @@ const recipes = {
         ],
         method: "Combine ingredients in a mixing glass with ice and stir until well-chilled.",
         serve: "Strain or build in a lowball glass over a large rock. Garnish with an orange twist."
+    },
+    'vienna-velvet': {
+        name: "Vienna Velvet",
+        ingredients: [
+            "1.5 oz vodka",
+            "Double-shot of espresso (chilled)",
+            "0.5 oz Kahlua",
+            "0.5 oz Irish Cream",
+            "0.25 oz Frangelico"
+        ],
+        method: "Combine all ingredients in a shaker with ice and shake vigorously to create a creamy foam.",
+        serve: "Double strain into a chilled coupe or martini glass. Garnish with a coffee bean."
     }
 };
