@@ -141,7 +141,7 @@ function clearAllFilters() {
 }
 
 
-// --- 3. GLOBAL EVENT LISTENERS --- //
+// --- 3. GLOBAL EVENT LISTENERS & INITIALIZATION --- //
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
