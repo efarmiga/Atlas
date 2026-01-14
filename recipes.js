@@ -47,7 +47,7 @@ const recipes = {
         name: "Nordic Vesper",
         category: "creations",
         cardIngredients: "gin, lillet blanc, elderflower liqueur, optional blueberry",
-        description: "Bond's iconic Vesper with a floral twist, served up (specify clear or blueberry)",
+        description: "Bond's iconic vesper with a floral twist, served up (specify clear or blueberry)",
         glass: "martini",
         ingredients: [
             "2 oz gin",
@@ -92,7 +92,7 @@ const recipes = {
         name: "Atlantic Crossing",
         category: "creations",
         cardIngredients: "bourbon, cinzano, rhubarb-ginger liqueur",
-        description: "transatlantic blend of spirits, over a large rock with cherry",
+        description: "Ellis Island mix of transatlantic spirits, over a large rock with cherry",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
@@ -179,7 +179,7 @@ const recipes = {
         name: "Broadway Manhattan",
         category: "classics",
         cardIngredients: "bourbon, sweet vermouth, aromatic bitters",
-        description: "the timeless NYC classic, served up with cherry",
+        description: "timeless NYC classic, served up with cherry",
         glass: "coupe",
         ingredients: [
             "2 oz bourbon",
@@ -193,7 +193,7 @@ const recipes = {
         name: "San Francisco Martinez",
         category: "classics",
         cardIngredients: "gin, sweet vermouth, bing cherry juice",
-        description: "the original Fog City cocktail with a hint of cherry, served up with lemon zest",
+        description: "original Fog City cocktail with a hint of cherry, served up with lemon zest",
         glass: "martini",
         ingredients: [
             "1.5 oz gin",
@@ -208,7 +208,7 @@ const recipes = {
         name: "Florentine Negroni",
         category: "classics",
         cardIngredients: "gin, campari, sweet vermouth",
-        description: "the iconic Italian aperitivo, over a large rock with orange twist",
+        description: "iconic Italian aperitivo, over a large rock with orange twist",
         glass: "lowball",
         ingredients: [
             "1 oz gin",
