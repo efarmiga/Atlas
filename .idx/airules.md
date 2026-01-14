@@ -10,9 +10,12 @@ Local Path: /Users/evhen.m.farmiga/documents/atlas/atlas
 
 Primary Files:
 
-Main Menu: atlas_cocktail_menu.html
-
-Style Selector: menu_style.html
+- **`atlas_cocktail_menu.html`**: The main HTML file (structure only).
+- **`recipes.js`**: The single source of truth for all cocktail data.
+- **`script.js`**: The application logic for rendering the menu and handling UI.
+- **`styles.css`**: The stylesheet where all themes are **defined**. This is the correct place to create or edit theme styles.
+- **`menu_style.html`**: The admin tool used to **select the active theme** for the live menu.
+- **`key_ingredients.json`**: Data for the ingredient filter.
 
 Key Constraint: Do NOT use or create index.html as the entry point. The app must be accessed via the specific HTML filenames provided.
 
@@ -45,6 +48,15 @@ Script Loading: Do not use query string versioning (e.g., `script.js?v=1.0`) for
 Style Consistency: When adding new recipes or modifying existing ones, always ensure the wording, capitalization, and punctuation are consistent with the rest of the menu and recipe data. This applies even if the user's prompt is stylistically inconsistent.
 
 Debugging: When analyzing errors, consider them thoroughly and in the context of the user's Firebase project setup and current code.
+
+# Styling System
+
+The application's visual theme is centrally managed. The workflow is as follows:
+1.  **Define Themes**: All visual styles and themes (e.g., `.theme-light`, `.theme-dark`) are defined directly in **`styles.css`**. This is the correct file to edit when creating or modifying the look and feel of the application.
+2.  **Select the Live Theme**: The **`menu_style.html`** page is an administrative tool used to set the active theme for all users. Opening this page and clicking a theme button updates a remote setting.
+3.  **Apply the Theme**: The main `atlas_cocktail_menu.html` page fetches this remote setting and applies the chosen theme class to the body, styling the entire app.
+
+**Key Rule**: Do not apply styles directly to `atlas_cocktail_menu.html`. All styling is handled by the classes defined in `styles.css`.
 
 # Overall Guidelines
 Process: Always provide a complete step-by-step plan for review before making code changes. Wait for user confirmation.

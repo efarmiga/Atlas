@@ -2,44 +2,48 @@
 
 ## Project Description
 
-This project is a web application that displays a menu of cocktails. The application is designed to be a simple, elegant, and user-friendly way to browse and view cocktail recipes. It is a single-page application that dynamically loads recipe information and allows for theme customization.
+This project is a dynamic, single-page web application that displays a menu of cocktails. The application is designed to be a simple, elegant, and user-friendly way to browse recipes. It is built with a data-driven approach, where all cocktail information is stored in a central JavaScript object and rendered dynamically at runtime.
 
 - **Live App URL:** [https://efarmiga.github.io/Atlas/atlas_cocktail_menu.html](https://efarmiga.github.io/Atlas/atlas_cocktail_menu.html)
-- **Theme Selector:** [https://efarmiga.github.io/Atlas/menu_style.html](https://efarmiga.github.io/Atlas/menu_style.html)
+- **Theme Selector Tool:** [https://efarmiga.github.io/Atlas/menu_style.html](https://efarmiga.github.io/Atlas/menu_style.html)
 
 ## Features
 
-- **Interactive Menu:** Cocktails are organized into two categories: "Creations" and "Classics."
-- **Recipe Modals:** Clicking on a cocktail opens a modal window that displays the ingredients, method, and serving instructions.
+- **Dynamic Menu:** Cocktails are rendered dynamically from a central data source and organized into "Creations" and "Classics."
+- **Recipe Modals:** Clicking a cocktail opens a modal with detailed ingredients, method, and serving instructions.
 - **Ingredient Filtering:** Users can filter the menu to show only cocktails containing specific key ingredients.
-- **Customizable Themes:** The visual theme of the menu can be changed using a separate theme selector page. Themes include "Light," "Dark," and "Holiday."
-- **Dynamic Theme Loading:** The selected theme is saved to and loaded from a remote JSONBin.io store, allowing the theme to persist across sessions.
-- **Mobile-Friendly Design:** The application is designed to be responsive and work well on mobile devices.
+- **Curated Themes:** The visual theme of the menu is curated and can be set for all users (e.g., for seasonal changes).
+- **Persistent Theme:** The selected theme is saved to a remote JSON store, ensuring it persists across all user sessions.
+- **Mobile-First Design:** The application is fully responsive and optimized for a seamless experience on mobile devices.
 
-## App Architecture
+## Technical Architecture
 
-The application is built with HTML, CSS, and JavaScript. Here is a breakdown of the key files:
+The application follows a modern, data-driven architecture that separates content, presentation, and logic.
 
-- **`atlas_cocktail_menu.html`:** The main HTML file for the application. It contains the structure of the menu and the recipe modal.
-- **`script.js`:** This file contains the JavaScript for the recipe modal, filtering logic, and theme handling.
-- **`recipes.js`:** This file contains the `recipes` object, which is a JavaScript object that stores all the cocktail recipes.
-- **`key_ingredients.json`:** This file lists the ingredients that appear in the filter modal.
-- **`styles.css`:** This file contains the custom CSS for the application, including the styles for the different themes.
-- **`menu_style.html`:** A separate HTML file that provides a user interface for selecting and saving a theme.
+- **`atlas_cocktail_menu.html` (The Structure):** The main HTML file that provides the basic structure of the page. It contains empty containers (`<div id="creations-container">` and `<div id="classics-container">`) which are populated by the script at runtime.
+- **`recipes.js` (The Data):** This file is the **single source of truth** for all cocktail data. It contains a single JavaScript object (`recipes`) where each cocktail is an entry with properties like name, ingredients, category, and description.
+- **`script.js` (The Logic):** This file contains all the application logic. The `renderMenu()` function reads the data from `recipes.js` and dynamically builds and injects the HTML for each cocktail card into the main page when it loads. It also handles the recipe modals and filtering functionality.
+- **`styles.css` (The Style Definitions):** This file contains all the theme definitions for the application (e.g., `theme-light`, `theme-dark`). New themes or style modifications should be made here.
+- **`menu_style.html` (The Theme Selector):** A separate utility page for **setting the active theme** for all users. It presents the themes defined in `styles.css` and saves the selected theme ID to the remote JSONBin.io store.
+- **`key_ingredients.json`:** A simple JSON file that lists the ingredients used to populate the filter modal.
 
 ## How to Add a New Cocktail Recipe
 
-Adding a new cocktail involves two simple steps: adding the recipe data and creating the menu card in the HTML.
+The new dynamic architecture makes adding a recipe incredibly simple. **You only need to edit one file.**
 
 ### Step 1: Add the Recipe to `recipes.js`
 
-Open the `recipes.js` file and add a new entry to the `recipes` object. The key must be a unique, lowercase, hyphenated string. This key is crucial as it links the HTML card to the recipe data.
+Open the `recipes.js` file and add a new entry to the `recipes` object. The key must be a unique, lowercase, hyphenated string (e.g., `new-york-sour`). This key is used for internal linking.
 
-Use this template for the new recipe:
+Use this template for the new recipe, filling in all properties:
 
 ```javascript
 'unique-drink-id': {
     name: "Name of Your Drink",
+    category: "creations", // or "classics"
+    cardIngredients: "A short, lowercase list for the menu card, e.g., rye, red wine, lemon",
+    description: "A brief, enticing description of the drink.",
+    glass: "coupe", // (martini, coupe, flute, lowball, highball)
     ingredients: [
         "2 oz Main Spirit",
         "1 oz Liqueur",
@@ -50,62 +54,31 @@ Use this template for the new recipe:
 },
 ```
 
-### Step 2: Add the Drink Card to `atlas_cocktail_menu.html`
+That's it! The `renderMenu` function in `script.js` will automatically detect the new data and render the drink card on the menu the next time the page loads. There is no need to write any HTML.
 
-Open `atlas_cocktail_menu.html` and decide whether the drink is a "Creation" or a "Classic." Add the new HTML block in the appropriate section.
+### Step 2: (Optional) Update Filterable Ingredients
 
-The `onclick` attribute **must** use the exact same unique key you created in `recipes.js`.
+If your new recipe includes a key ingredient that you want users to be able to filter by (and it's not already listed), add it to the `ingredients` array in `key_ingredients.json`.
 
-Use this template for the new drink card:
+## How to Change the Live Theme
 
-```html
-<!-- Drink Name -->
-<div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('unique-drink-id')">
-    <h3 class="drink-name text-xl font-medium mb-1">Name of Your Drink</h3>
-    <p class="text-sm italic accent-text mb-2">main spirit, liqueur, citrus</p>
-    <p class="drink-description text-xs font-medium">A short, enticing description of the drink's flavor profile and serve style.</p>
-</div>
-```
+The application's live theme (e.g., for seasonal updates) is managed through a simple, two-step process. This allows for centralized control over the user-facing appearance.
 
-### Step 3: (Optional) Update Filterable Ingredients
+### Step 1: (If necessary) Define a New Theme
 
-If your new recipe includes a key ingredient that you want users to be able to filter by, add it to the `ingredients` array in `key_ingredients.json`.
+If you need to create a new theme (e.g., a "Holiday" theme), open `styles.css` and define the new styles using a unique class, like `.theme-holiday`. You can model it after the existing `.theme-light` or `.theme-dark` classes.
 
-```json
-{
-  "ingredients": [
-    "bourbon",
-    "campari",
-    "gin",
-    "new ingredient"
-  ]
-}
-```
+### Step 2: Set the Active Theme
 
-That's it! The script will handle the rest. There is no need to manually update script versions.
+1.  **Open the Selector:** Open `menu_style.html` in your browser.
+2.  **Choose the Theme:** The page will display buttons for each theme defined in `styles.css`. Click the button for the theme you want to make live.
+3.  **Confirm:** The script will automatically save your selection to the remote JSONBin.io store. The main menu will then load this theme for all users.
 
-## How to Use the Local Repo (if needed - IDX preferred)
+This process ensures that styling is consistent and centrally managed. Avoid making one-off style changes in the main HTML file.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/efarmiga/Atlas
-    ```
+## Local Development
 
-2.  **Navigate to the project directory:**
-    ```bash
-    cd Atlas
-    ```
-
-3.  **Start a local web server:**
-    ```bash
-    python3 -m http.server 8000
-    ```
-
-4.  **View the application in your browser:**
-    [http://localhost:8000/atlas_cocktail_menu.html](http://localhost:8000/atlas_cocktail_menu.html)
-
-## IDX Environment
-
-This project is configured to run in a Google IDX environment. The `.idx/dev.nix` file sets up the necessary environment with Python for running a local server.
-
-To learn more about customizing your IDX environment, see the [IDX documentation](https://developers.google.com/idx/guides/customize-idx-env).
+1.  **Clone the repository:** `git clone https://github.com/efarmiga/Atlas`
+2.  **Navigate to the directory:** `cd Atlas`
+3.  **Start a local server:** `python3 -m http.server 8000`
+4.  **View the app:** `http://localhost:8000/atlas_cocktail_menu.html`
