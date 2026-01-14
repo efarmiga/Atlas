@@ -3,6 +3,7 @@ const recipes = {
     // CREATIONS
     'capri-75': {
         name: "Capri 75",
+        glass: "flute",
         ingredients: [
             "1 oz gin",
             "0.75 oz Limoncello",
@@ -13,6 +14,7 @@ const recipes = {
     },
     'caribbean-garibaldi': {
         name: "Caribbean Garibaldi",
+        glass: "highball",
         ingredients: [
             "1 oz Chinola (passionfruit liqueur)",
             "1 oz Campari",
@@ -23,6 +25,7 @@ const recipes = {
     },
     'tokyo-martini': {
         name: "Tokyo Martini",
+        glass: "martini",
         ingredients: [
             "1.5 oz gin",
             "1.5 oz rhubarb-ginger liqueur",
@@ -33,6 +36,7 @@ const recipes = {
     },
     'nordic-vesper': {
         name: "Nordic Vesper",
+        glass: "martini",
         ingredients: [
             "2 oz gin",
             "1 oz lillet blanc",
@@ -44,6 +48,7 @@ const recipes = {
     },
     'bordeaux-rose': {
         name: "Bordeaux Rose",
+        glass: "coupe",
         ingredients: [
             "2 strawberries, muddled",
             "1.5 oz gin",
@@ -55,6 +60,7 @@ const recipes = {
     },
     'key-west-gimlet': {
         name: "Key West Gimlet",
+        glass: "lowball",
         ingredients: [
             "2 oz gin",
             "1 oz coconut rum",
@@ -66,6 +72,7 @@ const recipes = {
     },
     'atlantic-crossing': {
         name: "Atlantic Crossing",
+        glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
             "1.5 oz cinzano vermouth",
@@ -76,6 +83,7 @@ const recipes = {
     },
     'westchester': {
         name: "Westchester",
+        glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
             "1.5 oz sweet vermouth",
@@ -86,6 +94,7 @@ const recipes = {
     },
     'kyoto-bloom': {
         name: "Kyoto Bloom",
+        glass: "coupe",
         ingredients: [
             "1.5 oz gin",
             "1.5 oz sake",
@@ -98,6 +107,7 @@ const recipes = {
     // CLASSICS
     'parisian-boulevardier': {
         name: "Parisian Boulevardier",
+        glass: "coupe",
         ingredients: [
             "1.5 oz bourbon",
             "1.5 oz campari",
@@ -108,6 +118,7 @@ const recipes = {
     },
     'san-juan-cafe-con-ron': {
         name: "San Juan Café con Ron",
+        glass: "martini",
         ingredients: [
             "1 double shot of espresso, chilled",
             "2 oz rum",
@@ -119,6 +130,7 @@ const recipes = {
     },
     'new-england-old-fashioned': {
         name: "New England Old Fashioned",
+        glass: "lowball",
         ingredients: [
             "2 oz bourbon",
             "0.25 oz maple syrup",
@@ -129,6 +141,7 @@ const recipes = {
     },
     'broadway-manhattan': {
         name: "Broadway Manhattan",
+        glass: "coupe",
         ingredients: [
             "2 oz bourbon",
             "1 oz sweet vermouth",
@@ -139,6 +152,7 @@ const recipes = {
     },
     'san-francisco-martinez': {
         name: "San Francisco Martinez",
+        glass: "martini",
         ingredients: [
             "1.5 oz gin",
             "1.5 oz sweet vermouth",
@@ -150,6 +164,7 @@ const recipes = {
     },
     'florence-negroni': {
         name: "Florentine Negroni",
+        glass: "lowball",
         ingredients: [
             "1 oz gin",
             "1 oz campari",
@@ -160,6 +175,7 @@ const recipes = {
     },
     'vienna-velvet': {
         name: "Vienna Velvet",
+        glass: "coupe",
         ingredients: [
             "1.5 oz vodka",
             "Double-shot of espresso (chilled)",
