@@ -101,7 +101,7 @@ function openFilterModal() {
 function closeFilterModal() {
     filterModalOverlay.classList.remove('active');
     setTimeout(() => {
-        recipeModalOverlay.style.display = 'none';
+        filterModalOverlay.style.display = 'none';
     }, 200);
 }
 
