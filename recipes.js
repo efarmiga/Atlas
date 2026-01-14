@@ -5,7 +5,7 @@ const recipes = {
         name: "Capri 75",
         category: "creations",
         cardIngredients: "gin, limoncello, prosecco",
-        description: "light & bubbly, served in a flute with a lemon twist",
+        description: "sparkling Amalfi coast spritz, in a flute with a lemon twist",
         glass: "flute",
         ingredients: [
             "1 oz gin",
@@ -19,7 +19,7 @@ const recipes = {
         name: "Caribbean Garibaldi",
         category: "creations",
         cardIngredients: "chinola, campari, fresh orange juice",
-        description: "tropical & bittersweet, served over ice in a highball",
+        description: "the Italian classic on a tropical vacation, over ice in a highball",
         glass: "highball",
         ingredients: [
             "1 oz Chinola (passionfruit liqueur)",
@@ -33,7 +33,7 @@ const recipes = {
         name: "Tokyo Martini",
         category: "creations",
         cardIngredients: "gin, rhubarb-ginger liqueur, lillet blanc",
-        description: "herbal & zesty, served up or over a large rock with an orange twist",
+        description: "gin meets ginger, served up or on a large rock",
         glass: "martini",
         ingredients: [
             "1.5 oz gin",
@@ -47,7 +47,7 @@ const recipes = {
         name: "Nordic Vesper",
         category: "creations",
         cardIngredients: "gin, lillet blanc, elderflower liqueur, optional blueberry",
-        description: "crisp & floral, served up, specify clear or blueberry",
+        description: "Bond's iconic Vesper with a floral twist, served up (specify clear or blueberry)",
         glass: "martini",
         ingredients: [
             "2 oz gin",
@@ -62,7 +62,7 @@ const recipes = {
         name: "Bordeaux Rose",
         category: "creations",
         cardIngredients: "gin, lillet blanc, rhubarb-ginger liqueur, muddled strawberry",
-        description: "fruity, served up in a coupe",
+        description: "taste of the French countryside, served up",
         glass: "coupe",
         ingredients: [
             "2 strawberries, muddled",
@@ -77,7 +77,7 @@ const recipes = {
         name: "Key West Gimlet",
         category: "creations",
         cardIngredients: "gin, coconut rum, key lime juice, muddled mint",
-        description: "tart & minty, served on the rocks in a lowball",
+        description: "beat the Florida heat with this tart and minty treat, on the rocks",
         glass: "lowball",
         ingredients: [
             "2 oz gin",
@@ -92,7 +92,7 @@ const recipes = {
         name: "Atlantic Crossing",
         category: "creations",
         cardIngredients: "bourbon, cinzano, rhubarb-ginger liqueur",
-        description: "rich & complex, served over a large rock with cherry",
+        description: "transatlantic blend of spirits, over a large rock with cherry",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
@@ -106,7 +106,7 @@ const recipes = {
         name: "Westchester",
         category: "creations",
         cardIngredients: "bourbon, sweet vermouth, bing cherry juice",
-        description: "Manhattan's smoother, richer cousin, served over a large rock",
+        description: "Manhattan's smoother, richer cousin, over a large rock with orange twist",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
@@ -120,7 +120,7 @@ const recipes = {
         name: "Kyoto Bloom",
         category: "creations",
         cardIngredients: "gin, sake, elderflower liqueur",
-        description: "a clean, floral and modern martini variation, served up",
+        description: "clean & floral as a zen garden, served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz gin",
@@ -133,10 +133,10 @@ const recipes = {
     
     // CLASSICS
     'parisian-boulevardier': {
-        name: "Parisian Boulevardier",
+        name: "Paris Boulevardier",
         category: "classics",
         cardIngredients: "bourbon, campari, sweet vermouth",
-        description: "stirred, served up or over a large rock with an orange twist",
+        description: "sophisticated Parisian evening, served up or on a large rock with orange twist",
         glass: "coupe",
         ingredients: [
             "1.5 oz bourbon",
@@ -150,7 +150,7 @@ const recipes = {
         name: "San Juan Café con Ron",
         category: "classics",
         cardIngredients: "espresso, Don Q Cristal rum, kahlua, coconut syrup",
-        description: "shaken, served in a martini glass",
+        description: "a Puerto Rican tradition, shaken and served up",
         glass: "martini",
         ingredients: [
             "1 double shot of espresso, chilled",
@@ -165,7 +165,7 @@ const recipes = {
         name: "New England Old Fashioned",
         category: "classics",
         cardIngredients: "bourbon, maple syrup, chocolate and walnut bitters",
-        description: "stirred, served over a large rock with an orange twist",
+        description: "maple syrup makes everything better, over a large rock with orange twist",
         glass: "lowball",
         ingredients: [
             "2 oz bourbon",
@@ -179,7 +179,7 @@ const recipes = {
         name: "Broadway Manhattan",
         category: "classics",
         cardIngredients: "bourbon, sweet vermouth, aromatic bitters",
-        description: "stirred, served up in a coupe with cherry",
+        description: "the timeless NYC classic, served up with cherry",
         glass: "coupe",
         ingredients: [
             "2 oz bourbon",
@@ -193,7 +193,7 @@ const recipes = {
         name: "San Francisco Martinez",
         category: "classics",
         cardIngredients: "gin, sweet vermouth, bing cherry juice",
-        description: "stirred, served up with a lemon zest",
+        description: "the original Fog City cocktail with a hint of cherry, served up with lemon zest",
         glass: "martini",
         ingredients: [
             "1.5 oz gin",
@@ -208,7 +208,7 @@ const recipes = {
         name: "Florentine Negroni",
         category: "classics",
         cardIngredients: "gin, campari, sweet vermouth",
-        description: "stirred, served over a large rock with an orange twist",
+        description: "the iconic Italian aperitivo, over a large rock with orange twist",
         glass: "lowball",
         ingredients: [
             "1 oz gin",
@@ -222,7 +222,7 @@ const recipes = {
         name: "Vienna Velvet",
         category: "classics",
         cardIngredients: "vodka, espresso, kahlua, irish cream",
-        description: "creamy espresso martini, shaken, served up",
+        description: "smooth and creamy espresso martini, shaken & served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz vodka",
