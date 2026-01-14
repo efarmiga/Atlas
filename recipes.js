@@ -62,7 +62,7 @@ const recipes = {
         name: "Bordeaux Rose",
         category: "creations",
         cardIngredients: "gin, lillet blanc, rhubarb-ginger liqueur, muddled strawberry",
-        description: "taste of the French countryside, served up",
+        description: "strawberry fields of France, served up",
         glass: "coupe",
         ingredients: [
             "2 strawberries, muddled",
@@ -120,7 +120,7 @@ const recipes = {
         name: "Kyoto Bloom",
         category: "creations",
         cardIngredients: "gin, sake, elderflower liqueur",
-        description: "clean & floral as a zen garden, served up",
+        description: "clean & floral zen garden saketini, served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz gin",
@@ -222,7 +222,7 @@ const recipes = {
         name: "Vienna Velvet",
         category: "classics",
         cardIngredients: "vodka, espresso, kahlua, irish cream",
-        description: "smooth and creamy espresso martini, shaken & served up",
+        description: "Austrian café-inspired espresso martini, shaken & served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz vodka",
