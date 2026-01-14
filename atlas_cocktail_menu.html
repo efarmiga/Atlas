@@ -79,90 +79,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
             <div class="space-y-6">
                 <h2 class="menu-title text-4xl sm:text-5xl border-b-2 border-gray-100 pb-3 mb-4 text-center lg:text-left accent-text elegant-title">Creations</h2>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('capri-75')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Capri 75</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, limoncello, prosecco</p>
-                    <p class="drink-description text-xs font-medium">light & bubbly, served in a flute with a lemon twist</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('nordic-vesper')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Nordic Vesper</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, lillet blanc, elderflower liqueur, optional blueberry</p>
-                    <p class="drink-description text-xs font-medium">crisp & floral, served up, specify clear or blueberry</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('tokyo-martini')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Tokyo Martini</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, rhubarb-ginger liqueur, lillet blanc</p>
-                    <p class="drink-description text-xs font-medium">herbal & zesty, served up or over a large rock with an orange twist</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('bordeaux-rose')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Bordeaux Rose</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, lillet blanc, rhubarb-ginger liqueur, muddled strawberry</p>
-                    <p class="drink-description text-xs font-medium">fruity, served up in a coupe</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('key-west-gimlet')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Key West Gimlet</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, coconut rum, key lime juice, muddled mint</p>
-                    <p class="drink-description text-xs font-medium">tart & minty, served on the rocks in a lowball</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('caribbean-garibaldi')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Caribbean Garibaldi</h3>
-                    <p class="text-sm italic accent-text mb-2">chinola, campari, fresh orange juice</p>
-                    <p class="drink-description text-xs font-medium">tropical & bittersweet, served over ice in a highball</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('atlantic-crossing')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Atlantic Crossing</h3>
-                    <p class="text-sm italic accent-text mb-2">bourbon, cinzano, rhubarb-ginger liqueur</p>
-                    <p class="drink-description text-xs font-medium">rich & complex, served over a large rock with cherry</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('westchester')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Westchester</h3>
-                    <p class="text-sm italic accent-text mb-2">bourbon, sweet vermouth, bing cherry juice</p>
-                    <p class="drink-description text-xs font-medium">Manhattan's smoother, richer cousin, served over a large rock</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('kyoto-bloom')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Kyoto Bloom</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, sake, elderflower liqueur</p>
-                    <p class="drink-description text-xs font-medium">a clean, floral and modern martini variation, served up</p>
-                </div>
+                <div id="creations-container" class="space-y-6"></div>
             </div>
 
             <div class="space-y-6">
                 <h2 class="menu-title text-4xl sm:text-5xl border-b-2 border-gray-100 pb-3 mb-4 text-center lg:text-left accent-text elegant-title">Classics</h2>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('san-francisco-martinez')">
-                    <h3 class="drink-name text-xl font-medium mb-1">San Francisco Martinez</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, sweet vermouth, bing cherry juice</p>
-                    <p class="drink-description text-xs font-medium">stirred, served up with a lemon zest</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('florence-negroni')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Florentine Negroni</h3>
-                    <p class="text-sm italic accent-text mb-2">gin, campari, sweet vermouth</p>
-                    <p class="drink-description text-xs font-medium">stirred, served over a large rock with an orange twist</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('new-england-old-fashioned')">
-                    <h3 class="drink-name text-xl font-medium mb-1">New England Old Fashioned</h3>
-                    <p class="text-sm italic accent-text mb-2">bourbon, maple syrup, chocolate and walnut bitters</p>
-                    <p class="drink-description text-xs font-medium">stirred, served over a large rock with an orange twist</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('broadway-manhattan')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Broadway Manhattan</h3>
-                    <p class="text-sm italic accent-text mb-2">bourbon, sweet vermouth, aromatic bitters</p>
-                    <p class="drink-description text-xs font-medium">stirred, served up in a coupe with cherry</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('parisian-boulevardier')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Parisian Boulevardier</h3>
-                    <p class="text-sm italic accent-text mb-2">bourbon, campari, sweet vermouth</p>
-                    <p class="drink-description text-xs font-medium">stirred, served up or over a large rock with an orange twist</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('san-juan-cafe-con-ron')">
-                    <h3 class="drink-name text-xl font-medium mb-1">San Juan Café con Ron</h3>
-                    <p class="text-sm italic accent-text mb-2">espresso, Don Q Cristal rum, kahlua, coconut syrup</p>
-                    <p class="drink-description text-xs font-medium">shaken, served in a martini glass</p>
-                </div>
-                <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('vienna-velvet')">
-                    <h3 class="drink-name text-xl font-medium mb-1">Vienna Velvet</h3>
-                    <p class="text-sm italic accent-text mb-2">vodka, espresso, kahlua, irish cream</p>
-                    <p class="drink-description text-xs font-medium">creamy espresso martini, shaken, served up</p>
-                </div>
+                <div id="classics-container" class="space-y-6"></div>
             </div>
         </div>
     </div>
@@ -191,36 +113,5 @@
             <p id="modal-serve" class="text-base text-gray-700"></p>
         </div>
     </div>
-
-<script>
-  window.addEventListener('load', () => {
-    const svgIcons = {
-      martini: '<path d="M2 3h20L12 13V21M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-      coupe: '<path d="M3 3c0 7 18 7 18 0M12 10v11M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-      flute: '<path d="M8 3v9c0 2 1.5 3 4 3s4-1 4-3V3M12 15v6M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-      lowball: '<path d="M5 3v15c0 1.5 1 2.5 2.5 2.5h9c1.5 0 2.5-1 2.5-2.5V3" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="8.5" y="11.5" width="7" height="7" rx="1.2" stroke="currentColor" fill="none" stroke-width="1.2" transform="rotate(-4 12 15)"/>',
-      highball: '<path d="M7 3v16c0 1 1 2 2 2h6c1 0 2-1 2-2V3" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="15" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1"/><rect x="9" y="10" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1" transform="rotate(10 11 12)"/><rect x="11" y="6" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1" transform="rotate(-15 13 8)"/>'
-    };
-
-    document.querySelectorAll('.drink-card').forEach(card => {
-      const match = card.getAttribute('onclick').match(/'([^']*)'/);
-      if (match && typeof recipes !== 'undefined' && recipes[match[1]]) {
-        const glassType = recipes[match[1]].glass || 'martini';
-        // Changed target to .drink-description
-        const targetContainer = card.querySelector('.drink-description');
-        
-        if (targetContainer) {
-          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          svg.setAttribute("viewBox", "0 0 24 24");
-          // Updated classes: w-4 h-4 for smaller size, color inherits from parent
-          svg.setAttribute("class", "w-4 h-4 inline-block mr-2 align-text-bottom opacity-90");
-          svg.innerHTML = svgIcons[glassType] || svgIcons.martini;
-          
-          targetContainer.prepend(svg);
-        }
-      }
-    });
-  });
-</script>
 </body>
 </html>

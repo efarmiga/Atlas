@@ -1,3 +1,4 @@
+
 window.recipes = recipes;
 
 // --- 1. RECIPE MODAL --- //
@@ -52,7 +53,6 @@ function closeRecipeModal() {
 const filterModalOverlay = document.getElementById('filter-modal-overlay');
 const filterOptions = document.getElementById('filter-options');
 const filterIcon = document.getElementById('filter-icon');
-const drinkCards = Array.from(document.querySelectorAll('.drink-card'));
 
 // Populate the filter modal with checkboxes from a JSON file
 async function populateFilterOptions() {
@@ -107,6 +107,7 @@ function closeFilterModal() {
 
 function applyFilters() {
     const selectedIngredients = Array.from(filterOptions.querySelectorAll('input:checked')).map(input => input.value);
+    const drinkCards = document.querySelectorAll('.drink-card');
 
     drinkCards.forEach(card => {
         const drinkId = card.getAttribute('onclick').match(/'([^']*)'/)[1];
@@ -142,8 +143,74 @@ function clearAllFilters() {
     applyFilters();
 }
 
+// --- 3. DYNAMIC MENU RENDERING --- //
+function renderMenu() {
+    const creationsContainer = document.getElementById('creations-container');
+    const classicsContainer = document.getElementById('classics-container');
+    
+    // Clear existing content
+    creationsContainer.innerHTML = '';
+    classicsContainer.innerHTML = '';
 
-// --- 3. GLOBAL EVENT LISTENERS & INITIALIZATION --- //
+    for (const drinkId in recipes) {
+        const recipe = recipes[drinkId];
+        const container = recipe.category === 'creations' ? creationsContainer : classicsContainer;
+
+        const cardHTML = `
+            <div class="drink-card p-4 bg-gray-50 rounded-lg border border-gray-100 shadow-sm cursor-pointer transition duration-150" onclick="showRecipeModal('${drinkId}')">
+                <h3 class="drink-name text-xl font-medium mb-1">${recipe.name}</h3>
+                <p class="text-sm italic accent-text mb-2">${recipe.cardIngredients}</p>
+                <p class="drink-description text-xs font-medium">${recipe.description}</p>
+            </div>
+        `;
+        
+        container.innerHTML += cardHTML;
+    }
+    
+    // Re-trigger SVG icon injection after cards are rendered
+    injectGlassIcons();
+}
+
+function injectGlassIcons() {
+    const svgIcons = {
+        martini: '<path d="M2 3h20L12 13V21M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+        coupe: '<path d="M3 3c0 7 18 7 18 0M12 10v11M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+        flute: '<path d="M8 3v9c0 2 1.5 3 4 3s4-1 4-3V3M12 15v6M9 21h6" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+        lowball: '<path d="M5 3v15c0 1.5 1 2.5 2.5 2.5h9c1.5 0 2.5-1 2.5-2.5V3" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="8.5" y="11.5" width="7" height="7" rx="1.2" stroke="currentColor" fill="none" stroke-width="1.2" transform="rotate(-4 12 15)"/>',
+        highball: '<path d="M7 3v16c0 1 1 2 2 2h6c1 0 2-1 2-2V3" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="10" y="15" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1"/><rect x="9" y="10" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1" transform="rotate(10 11 12)"/><rect x="11" y="6" width="4" height="4" rx="0.5" stroke="currentColor" fill="none" stroke-width="1" transform="rotate(-15 13 8)"/>'
+    };
+
+    document.querySelectorAll('.drink-card').forEach(card => {
+        const onclickAttr = card.getAttribute('onclick');
+        if (!onclickAttr) return;
+
+        const match = onclickAttr.match(/'([^']*)'/);
+        if (match && recipes[match[1]]) {
+            const recipe = recipes[match[1]];
+            const glassType = recipe.glass || 'martini';
+            const targetContainer = card.querySelector('.drink-description');
+
+            if (targetContainer) {
+                // Check if an icon already exists
+                if (targetContainer.querySelector('svg')) {
+                    return; 
+                }
+
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute("viewBox", "0 0 24 24");
+                svg.setAttribute("class", "w-4 h-4 inline-block mr-2 align-text-bottom opacity-90");
+                svg.innerHTML = svgIcons[glassType] || svgIcons.martini;
+                
+                targetContainer.prepend(svg);
+            }
+        }
+    });
+}
+
+
+// --- 4. GLOBAL EVENT LISTENERS & INITIALIZATION --- //
+
+document.addEventListener('DOMContentLoaded', renderMenu);
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

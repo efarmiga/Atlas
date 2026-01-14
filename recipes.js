@@ -3,6 +3,9 @@ const recipes = {
     // CREATIONS
     'capri-75': {
         name: "Capri 75",
+        category: "creations",
+        cardIngredients: "gin, limoncello, prosecco",
+        description: "light & bubbly, served in a flute with a lemon twist",
         glass: "flute",
         ingredients: [
             "1 oz gin",
@@ -14,6 +17,9 @@ const recipes = {
     },
     'caribbean-garibaldi': {
         name: "Caribbean Garibaldi",
+        category: "creations",
+        cardIngredients: "chinola, campari, fresh orange juice",
+        description: "tropical & bittersweet, served over ice in a highball",
         glass: "highball",
         ingredients: [
             "1 oz Chinola (passionfruit liqueur)",
@@ -25,6 +31,9 @@ const recipes = {
     },
     'tokyo-martini': {
         name: "Tokyo Martini",
+        category: "creations",
+        cardIngredients: "gin, rhubarb-ginger liqueur, lillet blanc",
+        description: "herbal & zesty, served up or over a large rock with an orange twist",
         glass: "martini",
         ingredients: [
             "1.5 oz gin",
@@ -36,6 +45,9 @@ const recipes = {
     },
     'nordic-vesper': {
         name: "Nordic Vesper",
+        category: "creations",
+        cardIngredients: "gin, lillet blanc, elderflower liqueur, optional blueberry",
+        description: "crisp & floral, served up, specify clear or blueberry",
         glass: "martini",
         ingredients: [
             "2 oz gin",
@@ -48,6 +60,9 @@ const recipes = {
     },
     'bordeaux-rose': {
         name: "Bordeaux Rose",
+        category: "creations",
+        cardIngredients: "gin, lillet blanc, rhubarb-ginger liqueur, muddled strawberry",
+        description: "fruity, served up in a coupe",
         glass: "coupe",
         ingredients: [
             "2 strawberries, muddled",
@@ -60,6 +75,9 @@ const recipes = {
     },
     'key-west-gimlet': {
         name: "Key West Gimlet",
+        category: "creations",
+        cardIngredients: "gin, coconut rum, key lime juice, muddled mint",
+        description: "tart & minty, served on the rocks in a lowball",
         glass: "lowball",
         ingredients: [
             "2 oz gin",
@@ -72,6 +90,9 @@ const recipes = {
     },
     'atlantic-crossing': {
         name: "Atlantic Crossing",
+        category: "creations",
+        cardIngredients: "bourbon, cinzano, rhubarb-ginger liqueur",
+        description: "rich & complex, served over a large rock with cherry",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
@@ -83,6 +104,9 @@ const recipes = {
     },
     'westchester': {
         name: "Westchester",
+        category: "creations",
+        cardIngredients: "bourbon, sweet vermouth, bing cherry juice",
+        description: "Manhattan's smoother, richer cousin, served over a large rock",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
@@ -94,6 +118,9 @@ const recipes = {
     },
     'kyoto-bloom': {
         name: "Kyoto Bloom",
+        category: "creations",
+        cardIngredients: "gin, sake, elderflower liqueur",
+        description: "a clean, floral and modern martini variation, served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz gin",
@@ -107,6 +134,9 @@ const recipes = {
     // CLASSICS
     'parisian-boulevardier': {
         name: "Parisian Boulevardier",
+        category: "classics",
+        cardIngredients: "bourbon, campari, sweet vermouth",
+        description: "stirred, served up or over a large rock with an orange twist",
         glass: "coupe",
         ingredients: [
             "1.5 oz bourbon",
@@ -118,6 +148,9 @@ const recipes = {
     },
     'san-juan-cafe-con-ron': {
         name: "San Juan Café con Ron",
+        category: "classics",
+        cardIngredients: "espresso, Don Q Cristal rum, kahlua, coconut syrup",
+        description: "shaken, served in a martini glass",
         glass: "martini",
         ingredients: [
             "1 double shot of espresso, chilled",
@@ -130,6 +163,9 @@ const recipes = {
     },
     'new-england-old-fashioned': {
         name: "New England Old Fashioned",
+        category: "classics",
+        cardIngredients: "bourbon, maple syrup, chocolate and walnut bitters",
+        description: "stirred, served over a large rock with an orange twist",
         glass: "lowball",
         ingredients: [
             "2 oz bourbon",
@@ -141,6 +177,9 @@ const recipes = {
     },
     'broadway-manhattan': {
         name: "Broadway Manhattan",
+        category: "classics",
+        cardIngredients: "bourbon, sweet vermouth, aromatic bitters",
+        description: "stirred, served up in a coupe with cherry",
         glass: "coupe",
         ingredients: [
             "2 oz bourbon",
@@ -152,6 +191,9 @@ const recipes = {
     },
     'san-francisco-martinez': {
         name: "San Francisco Martinez",
+        category: "classics",
+        cardIngredients: "gin, sweet vermouth, bing cherry juice",
+        description: "stirred, served up with a lemon zest",
         glass: "martini",
         ingredients: [
             "1.5 oz gin",
@@ -164,6 +206,9 @@ const recipes = {
     },
     'florence-negroni': {
         name: "Florentine Negroni",
+        category: "classics",
+        cardIngredients: "gin, campari, sweet vermouth",
+        description: "stirred, served over a large rock with an orange twist",
         glass: "lowball",
         ingredients: [
             "1 oz gin",
@@ -175,6 +220,9 @@ const recipes = {
     },
     'vienna-velvet': {
         name: "Vienna Velvet",
+        category: "classics",
+        cardIngredients: "vodka, espresso, kahlua, irish cream",
+        description: "creamy espresso martini, shaken, served up",
         glass: "coupe",
         ingredients: [
             "1.5 oz vodka",
