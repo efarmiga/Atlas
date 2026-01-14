@@ -1,4 +1,3 @@
-
 window.recipes = recipes;
 
 // --- 1. RECIPE MODAL --- //
@@ -110,7 +109,7 @@ function applyFilters() {
     const drinkCards = document.querySelectorAll('.drink-card');
 
     drinkCards.forEach(card => {
-        const drinkId = card.getAttribute('onclick').match(/'([^']*)'/)[1];
+        const drinkId = card.getAttribute('onclick').match(/'([^^']*)'/)[1];
         const recipe = recipes[drinkId];
         
         if (recipe) {
@@ -184,7 +183,7 @@ function injectGlassIcons() {
         const onclickAttr = card.getAttribute('onclick');
         if (!onclickAttr) return;
 
-        const match = onclickAttr.match(/'([^']*)'/);
+        const match = onclickAttr.match(/'([^^']*)'/);
         if (match && recipes[match[1]]) {
             const recipe = recipes[match[1]];
             const glassType = recipe.glass || 'martini';
@@ -210,7 +209,19 @@ function injectGlassIcons() {
 
 // --- 4. GLOBAL EVENT LISTENERS & INITIALIZATION --- //
 
-document.addEventListener('DOMContentLoaded', renderMenu);
+function initializeApp() {
+    console.log("Initializing App...");
+    // Check if recipes object exists
+    if (typeof recipes !== 'undefined' && Object.keys(recipes).length > 0) {
+        renderMenu();
+    } else {
+        console.error("Recipes data not found. Retrying in 100ms...");
+        setTimeout(initializeApp, 100); // Retry once if recipes.js is slow
+    }
+}
+
+// Use 'load' instead of 'DOMContentLoaded' to ensure all deferred scripts are ready
+window.addEventListener('load', initializeApp);
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
