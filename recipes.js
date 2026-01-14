@@ -106,7 +106,7 @@ const recipes = {
         name: "Westchester",
         category: "creations",
         cardIngredients: "bourbon, sweet vermouth, bing cherry juice",
-        description: "Manhattan's smoother, richer cousin, over a large rock with orange twist",
+        description: "Manhattan's smoother, richer cousin, over a large rock with cherry",
         glass: "lowball",
         ingredients: [
             "1.5 oz bourbon",
