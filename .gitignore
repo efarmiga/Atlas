@@ -1,2 +1,5 @@
 .DS_Store
-GEMINI.md
+Atlas/
+OLD/
+firebase-debug.log
+FETCH_HEAD
